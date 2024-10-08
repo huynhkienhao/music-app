@@ -3,7 +3,7 @@ const router = express.Router();
 const songController = require("../Controllers/SongController");
 // const songRouter = require("./routes/song");
 const Song = require("../Models/Song"); // Mô hình bài hát trong MongoDB
-const User = require("../Models/AdminUser"); // Mô hình người dùng trong MongoDB
+const User = require("../Models/UserModel"); // Mô hình người dùng trong MongoDB
 
 // app.use("/api", songRouter);
 

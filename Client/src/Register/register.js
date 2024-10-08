@@ -10,7 +10,7 @@ handlerRegister = () => {
 
 
     // 2. Gửi value trên Form register lên Server
-    axios.post('http://localhost:4000/api/auth/register', {
+    axios.post('http://localhost:4000/api/register', {
         username: username,
         email: email,
         password: password
