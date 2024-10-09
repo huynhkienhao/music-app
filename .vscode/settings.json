@@ -4,5 +4,6 @@
         "Favouritestypes",
         "getfavourites",
         "widgetcard"
-    ]
+    ],
+    "liveServer.settings.port": 5501
 }

@@ -55,8 +55,8 @@ const register = async (req, res) => {
         }
 
         await userModel.create({
-            username,
-            email,
+            username: username,
+            email: email,
             password: bcrypt.hashSync(password, 10),
             // role: {type: String, default: 'user}
             role: 'regular'
@@ -64,7 +64,7 @@ const register = async (req, res) => {
         // const user = new userModel({
         //     username,
         //     email,
-        //     password: hashedPassword,
+        //     password: bcrypt.hashSync(password, 10)
         // });
 
         // await user.save();
