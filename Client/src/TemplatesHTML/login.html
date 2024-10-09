@@ -41,11 +41,11 @@
                 <div class="login__socialMedia">
                     <button class="login__socialMedia-btn login__socialMedia-btn--google mb-3 input-50">
                         <i class="fa-brands fa-google login__socialMedia-icon login__socialMedia-icon--google"></i>
-                        <span class="login__socialMedia-text">Đăng ký bằng Google</span>
+                        <span class="login__socialMedia-text">Đăng nhập bằng Google</span>
                     </button>
                     <button class="login__socialMedia-btn login__socialMedia-btn--facebook input-50">
                         <i class="fa-brands fa-facebook login__socialMedia-icon login__socialMedia-icon--facebook"></i>
-                        <span class="login__socialMedia-text">Đăng ký bằng Facebook</span>
+                        <span class="login__socialMedia-text">Đăng nhập bằng Facebook</span>
                     </button>
                 </div>
 
@@ -55,13 +55,13 @@
 
                 <div class="login__input-form">
                     <div class="login__input-item login__input--email mb-3">
-                        <input type="email" class="p-3" placeholder="Email">
+                        <input id="email" type="email" class="p-3" placeholder="Email">
                     </div>
                     <div class="login__input-item login__input--password mb-3">
-                        <input type="password" class="p-3" placeholder="Password">
+                        <input id="password" type="password" class="p-3" placeholder="Password">
                     </div>
                     <div class="login__input-btn mt-5 input-50">
-                        <button class="login__input-submit">Đăng nhập</button>
+                        <button onclick="handleLogin()" type="button" class="login__input-submit">Đăng nhập</button>
                     </div>
                 </div>
 
@@ -86,6 +86,9 @@
             </footer>
         </div>
     </div>
+
+    <script src="https://unpkg.com/axios@1.6.7/dist/axios.min.js"></script>
+    <script src="./assets/js/login.js"></script>
 </body>
 
 </html>
