@@ -1,11 +1,11 @@
 const express = require("express");
 const router = express.Router();
+const bcrypt = require("bcrypt");
 
 const jwt = require("jsonwebtoken");
 
 const userModel = require("../Models/UserModel");
 
-const bcrypt = require("bcrypt");
 const multer = require("multer");
 const verify = require("./verifyToken");
 const upload = multer();
@@ -54,11 +54,11 @@ const register = async (req, res) => {
                 .json({ message: "Username, Email and Password are required" });
         }
 
-        const hashedPassword = await bcrypt.hash(password, 10);
         await userModel.create({
             username,
             email,
-            password: hashedPassword,
+            password: bcrypt.hashSync(password, 10),
+            // role: {type: String, default: 'user}
             role: 'regular'
         });
         // const user = new userModel({
@@ -68,8 +68,7 @@ const register = async (req, res) => {
         // });
 
         // await user.save();
-        // return res.status(201).json({ message: "User registered successfully", user });
-        return res.status(200).send('register user - AdminController');
+        return res.status(200).send('register user');
     } catch (error) {
         console.error("Error in registration:", error);
         res.status(500).json({ message: "Internal server error" });
