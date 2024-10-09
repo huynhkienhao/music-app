@@ -105,12 +105,16 @@
 .register__socialMedia-btn {
     width: 325px;
     border-radius: 30px;
-    border: 1px solid #dcdbdb;
+    border: 1px solid #dcdbdb92;
     background-color: transparent;
     font-size: 1.5rem;
     font-weight: 500;
     display: flex;
     align-items: center;
+}
+
+.register__socialMedia-btn:hover {
+    border: 1px solid #dcdbdb;
 }
 
 .register__socialMedia-icon {

@@ -17,7 +17,7 @@ handlerRegister = async () => {
             password: password
         })
         if (response.status == 200) {
-            window.location.href = '../Login/login.html';
+            window.location.href = 'login.html';
         }
     } catch (error) {
         console.log(error);
