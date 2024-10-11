@@ -76,7 +76,7 @@ const login = async (req, res, next) => {
             _id: user.id,
             username: user.username,
             role: user.role
-        }, 'jwtSecret', {
+        }, process.env.SECRET_JWT, {
             expiresIn: 10
         })
 

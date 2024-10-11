@@ -20,8 +20,8 @@ const songRouter = require("./Router/song");
 const favoriteRouter = require("./Router/favorite");
 // const multer = require("multer");
 
-// Load environment variables
-require("dotenv").config();
+// import and configure dotenv
+require('dotenv').config();
 
 // Middleware apply cors add all request
 app.use(cors());
@@ -89,7 +89,6 @@ app.get("/api/suggested-songs", (req, res) => {
 // Middleware Router
 app.use("/api", authRoute);
 app.use("/users", userRoute);
-// app.use("/api/auth", authRoute);
 app.use("/api", songRouter);
 app.use("/api", categoryRouter);
 app.use("/api", favoriteRouter);
