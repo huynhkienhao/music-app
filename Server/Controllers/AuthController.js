@@ -55,7 +55,7 @@ const login = async (req, res, next) => {
 
         // Check email exit
         // const user = await userModel.findOne({ username });
-        const user = userModel.findOne({ email: req.body.email })
+        const user = await userModel.findOne({ email: req.body.email })
 
         if (!user) {
             return res.status(400).send('Email hoặc password không hợp lệ');
