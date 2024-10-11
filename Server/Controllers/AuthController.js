@@ -18,32 +18,6 @@ const generateToken = (user) => {
     return jwt.sign(payload, process.env.JWT_SECRET, { expiresIn: "1h" });
 };
 
-const login = async (req, res, next) => {
-    try {
-        const { username, password } = req.body;
-
-        // Find user by username
-        const user = await userModel.findOne({ username });
-        if (!user)
-            return res
-                .status(401)
-                .json({ msg: "Incorrect Username or Password", status: false });
-
-        // Compare passwords
-        const isPasswordValid = await bcrypt.compare(password, user.password);
-        if (!isPasswordValid)
-            return res
-                .status(401)
-                .json({ msg: "Incorrect Username or Password", status: false });
-
-        // If username and password are correct, generate token and send response
-        const token = generateToken(user);
-        res.json({ status: true, user, token });
-    } catch (error) {
-        next(error); // Pass the error to the error handling middleware
-    }
-};
-
 const register = async (req, res) => {
     try {
         const { username, email, password } = req.body;
@@ -75,6 +49,35 @@ const register = async (req, res) => {
     }
 };
 
+const login = async (req, res, next) => {
+    try {
+        const { username, password } = req.body;
+
+        // Check email exit
+        // const user = await userModel.findOne({ username });
+        const user = userModel.findOne({ email: req.body.email })
+
+        if (!user) {
+            return res.status(400).send('Email hoặc password không hợp lệ');
+        }
+
+        // Check password
+        // const isPasswordValid = await bcrypt.compare(password, user.password);
+        const isPassValid = bcrypt.compareSync(req.body.password, user.password);
+
+        if (!isPassValid) {
+            return res.status(400).send('Email hoặc password không hợp lệ');
+        }
+
+        // const token = generateToken(user);
+        // res.json({ status: true, user, token });
+
+        return res.status(200).send('Đăng nhập hợp lệ');
+    } catch (error) {
+        next(error);
+    }
+};
+
 const logOut = (req, res, next) => {
     try {
         res.clearCookie("token").json("Logged out");
@@ -89,56 +92,3 @@ module.exports = {
     logOut: logOut
 }
 
-// module.exports.getAdminProfile = async (req, res, next) => {
-
-//   try {
-//     const adminProfile = await User.findOne(); // You need to implement this function
-
-//     // Check if admin profile data is retrieved successfully
-//     if (adminProfile) {
-//       // Send the admin profile data as JSON response
-//       res.json({ AdminProfile: adminProfile, successMsg: 'Admin profile retrieved successfully' });
-//     } else {
-//       // If admin profile data retrieval fails, send an error response
-//       res.status(500).json({ errorMsg: 'Failed to retrieve admin profile' });
-//     }
-//   } catch (error) {
-//     console.error('Error retrieving admin profile:', error);
-//     res.status(500).json({ errorMsg: 'Error retrieving admin profile' }); // Return an error response
-//   }
-// };
-
-// module.exports.getAllUsers = async (req, res, next) => {
-//   try {
-//     const users = await User.find({ _id: { $ne: req.params.id } }).select([
-//       "email",
-//       "username",
-//       "avatarImage",
-//       "_id",
-//     ]);
-//     return res.json(users);
-//   } catch (ex) {
-//     next(ex);
-//   }
-// };
-
-// module.exports.setAvatar = async (req, res, next) => {
-//   try {
-//     const userId = req.params.id;
-//     const avatarImage = req.body.image;
-//     const userData = await User.findByIdAndUpdate(
-//       userId,
-//       {
-//         isAvatarImageSet: true,
-//         avatarImage,
-//       },
-//       { new: true }
-//     );
-//     return res.json({
-//       isSet: userData.isAvatarImageSet,
-//       image: userData.avatarImage,
-//     });
-//   } catch (ex) {
-//     next(ex);
-//   }
-// };
