@@ -1,7 +1,6 @@
 const express = require("express");
 const router = express.Router();
 const bcrypt = require("bcrypt");
-
 const jwt = require("jsonwebtoken");
 
 const userModel = require("../Models/UserModel");
@@ -72,7 +71,18 @@ const login = async (req, res, next) => {
         // const token = generateToken(user);
         // res.json({ status: true, user, token });
 
-        return res.status(200).send('Đăng nhập hợp lệ');
+        // Tạo JWT
+        const jwtToken = jwt.sign({
+            _id: user.id,
+            username: user.username,
+            role: user.role
+        }, 'jwtSecret', {
+            expiresIn: 10
+        })
+
+        return res.status(200).send({
+            accessToken: jwtToken
+        });
     } catch (error) {
         next(error);
     }
