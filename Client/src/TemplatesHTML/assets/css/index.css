@@ -1,0 +1,80 @@
+.app {
+    height: 100%;
+}
+
+.background {
+    height: 100%;
+}
+
+.header__brand {
+    padding-top: 30px;
+}
+
+.header__brand-logo {
+    width: 50px;
+    margin: auto;
+    margin-bottom: 16px;
+}
+
+.header__brand-img {
+    width: 100%;
+}
+
+.header__brand-title {
+    width: 310px;
+    margin: auto;
+    color: var(--white-color);
+}
+
+.header__brand-title h1 {
+    text-align: center;
+    margin: 0;
+    font-family: "Protest Strike", sans-serif;
+    font-size: 5rem;
+    line-height: 6rem;
+}
+
+/* Auth form */
+.auth-form__container {
+    margin-top: 80px;
+}
+
+.auth-form__btn-item {
+    width: 200px;
+    height: 50px;
+    background-color: var(--primary-color);
+    color: var(--white-color);
+    display: inline-block;
+    line-height: 50px;
+    text-decoration: none;
+    border-radius: 5px;
+    font-weight: 600;
+    font-size: 2rem;
+}
+
+.auth-form__btn--register {
+    margin-right: 8px;
+}
+
+/* Register Already have an account */
+.register__account {
+    text-align: center;
+    font-size: 1.6rem;
+}
+
+.register__account-link {
+    color: var(--white-color);
+}
+
+/* Footer reCAPTCHA */
+.footer__reCAPTCHA {
+    padding: 80px 0;
+    font-size: 1.4rem;
+    width: 325px;
+    margin: auto;
+    text-align: center;
+}
+
+.footer__reCAPTCHA-link {
+    color: var(--white-color);
+}

@@ -27,66 +27,69 @@
 
 <body>
     <div class="app">
-        <header class="header__brand">
-            <div class="header__brand-logo">
-                <img src="./img/logo_spotify.webp" alt="" class="header__brand-img">
-            </div>
-            <div class="header__brand-title">
-                <h1>Sign up to start listening</h1>
-            </div>
-        </header>
-
-        <div class="container">
-            <div class="register__form">
-                <div class="register__form-item register__form--fullName mb-3">
-                    <input id="username" type="text" class="register__form-input p-3" placeholder="Username">
+        <div class="background">
+            <header class="header__brand">
+                <div class="header__brand-logo">
+                    <img src="./img/logo_spotify.webp" alt="" class="header__brand-img">
                 </div>
-                <div class="register__form-item register__form--email mb-3">
-                    <input id="email" type="email" class="register__form-input p-3" placeholder="Email">
+                <div class="header__brand-title">
+                    <h1>Sign up to start listening</h1>
                 </div>
-                <div class="register__form-item register__form--password mb-3">
-                    <input id="password" type="password" class="register__form-input p-3" placeholder="Password">
+            </header>
+
+            <div class="container">
+                <div class="register__form">
+                    <div class="register__form-item register__form--fullName mb-3">
+                        <input id="username" type="text" class="register__form-input p-3" placeholder="Username">
+                    </div>
+                    <div class="register__form-item register__form--email mb-3">
+                        <input id="email" type="email" class="register__form-input p-3" placeholder="Email">
+                    </div>
+                    <div class="register__form-item register__form--password mb-3">
+                        <input id="password" type="password" class="register__form-input p-3" placeholder="Password">
+                    </div>
+                    <div class="register__form-btn mt-5 input-50">
+                        <button onClick="handlerRegister()" type="button" class="register__form-submit">Đăng ký</button>
+                    </div>
                 </div>
-                <div class="register__form-btn mt-5 input-50">
-                    <button onClick="handlerRegister()" type="button" class="register__form-submit">Đăng ký</button>
+
+                <div class="register__or">
+                    <div class="register__or-line"></div>
+                    <div class="register__or-title">or</div>
+                    <div class="register__or-line"></div>
+                </div>
+
+                <div class="register__socialMedia">
+                    <button class="register__socialMedia-btn register__socialMedia-btn--google mb-3 input-50">
+                        <i
+                            class="fa-brands fa-google register__socialMedia-icon register__socialMedia-icon--google"></i>
+                        <span class="register__socialMedia-text">Đăng ký bằng Google</span>
+                    </button>
+                    <button class="register__socialMedia-btn register__socialMedia-btn--facebook input-50">
+                        <i
+                            class="fa-brands fa-facebook register__socialMedia-icon register__socialMedia-icon--facebook"></i>
+                        <span class="register__socialMedia-text">Đăng ký bằng Facebook</span>
+                    </button>
+                </div>
+
+                <hr class="register__hr">
+
+                <div class="register__account">
+                    <span class="register__account-text">Bạn đã có tài khoản?</span>
+                    <a href="/client/src/TemplatesHTML/login.html" class="register__account-link">Đăng nhập tại đây.</a>
                 </div>
             </div>
 
-            <div class="register__or">
-                <div class="register__or-line"></div>
-                <div class="register__or-title">or</div>
-                <div class="register__or-line"></div>
-            </div>
-
-            <div class="register__socialMedia">
-                <button class="register__socialMedia-btn register__socialMedia-btn--google mb-3 input-50">
-                    <i class="fa-brands fa-google register__socialMedia-icon register__socialMedia-icon--google"></i>
-                    <span class="register__socialMedia-text">Đăng ký bằng Google</span>
-                </button>
-                <button class="register__socialMedia-btn register__socialMedia-btn--facebook input-50">
-                    <i
-                        class="fa-brands fa-facebook register__socialMedia-icon register__socialMedia-icon--facebook"></i>
-                    <span class="register__socialMedia-text">Đăng ký bằng Facebook</span>
-                </button>
-            </div>
-
-            <hr class="register__hr">
-
-            <div class="register__account">
-                <span class="register__account-text">Bạn đã có tài khoản?</span>
-                <a href="" class="register__account-link">Đăng nhập tại đây.</a>
-            </div>
+            <footer class="footer__reCAPTCHA">
+                <p class="footer__reCAPTCHA-text">
+                    This site is protected by reCAPTCHA and the Google
+                    <a href="" class="footer__reCAPTCHA-link">Privacy Policy</a>
+                    and
+                    <a href="" class="footer__reCAPTCHA-link">Terms of Service</a>
+                    apply.
+                </p>
+            </footer>
         </div>
-
-        <footer class="footer__reCAPTCHA">
-            <p class="footer__reCAPTCHA-text">
-                This site is protected by reCAPTCHA and the Google
-                <a href="" class="footer__reCAPTCHA-link">Privacy Policy</a>
-                and
-                <a href="" class="footer__reCAPTCHA-link">Terms of Service</a>
-                apply.
-            </p>
-        </footer>
     </div>
 
     <script src="https://unpkg.com/axios@1.6.7/dist/axios.min.js"></script>

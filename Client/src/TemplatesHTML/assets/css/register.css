@@ -42,8 +42,6 @@
     width: 100%;
 }
 
-.register__form--fullName {}
-
 .register__form-input {
     height: 50px;
     border-radius: 3px;
@@ -57,12 +55,6 @@
 .register__form-input::placeholder {
     color: #dcdbdb;
 }
-
-.register__form--email {}
-
-.register__form--password {}
-
-.register__form-btn {}
 
 .register__form-submit {
     height: 100%;

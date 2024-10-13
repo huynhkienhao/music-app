@@ -1,9 +1,3 @@
-/* Background */
-.background {
-    background-image: linear-gradient(0, black, #333333);
-    padding: 30px 0px 0px 0px;
-}
-
 /* Form Title */
 .login__form {
     background-color: var(--black-color);
