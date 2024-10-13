@@ -1,7 +1,7 @@
 import React, { useEffect } from "react";
 import "../styles/LeftMenu.css";
 import Search from "./Search";
-import { BrowserRouter as Router, Route, Switch,Link} from 'react-router-dom'
+import { BrowserRouter as Router, Route, Link } from 'react-router-dom'
 function Menu({ title, listObject }) {
   useEffect(() => {
     const allLi = document
@@ -19,23 +19,23 @@ function Menu({ title, listObject }) {
   return (
 
     <div className="menuContainer">
-       <Router>
-   
-  <p>{title}</p>
+      <Router>
 
-      <ul>
-        {listObject &&
-          listObject.map((li) => (
-            <li key={li.id}>
-               <Link to = {li.path} > 
-            
-         
-                <i>{li.icon}</i>
-                <span> {li.name}</span>
+        <p>{title}</p>
+
+        <ul>
+          {listObject &&
+            listObject.map((li) => (
+              <li key={li.id}>
+                <Link to={li.path} >
+
+
+                  <i>{li.icon}</i>
+                  <span> {li.name}</span>
                 </Link>
-            </li>
-          ))}
-      </ul>
+              </li>
+            ))}
+        </ul>
       </Router>
     </div>
   );

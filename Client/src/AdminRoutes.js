@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import {  BrowserRouter as Router,Route, Switch, Redirect } from "react-router-dom";
+import { BrowserRouter as Router, Route, Routes, Navigate } from "react-router-dom";
 import Dashboard from "./Admin/component/scenes/dashboard";
 import Topbar from "./Admin/component/scenes/global/Topbar";
 import Sidebars from "./Admin/component/scenes/global/Sidebars";
@@ -37,19 +37,19 @@ function AdminRoutes(props) {
     // Fetch admin profile when the component mounts
     props.getAdminProfile();
   }, []);
-  
+
   const [theme, colorMode] = useMode();
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [isSidebar, setIsSidebar] = useState(true);
 
   // Conditionally render login if not authenticated
   if (!props.authAdmin.token || props.authAdmin.token === undefined) {
-    return <Login /> ; 
+    return <Login />;
   }
 
   // Once authenticated, render the main application
   return (
-    
+
     <ColorModeContext.Provider value={colorMode}>
       <ThemeProvider theme={theme}>
         <CssBaseline />
@@ -57,27 +57,27 @@ function AdminRoutes(props) {
           <Sidebars isSidebar={isSidebar} />
           <main className="contents">
             <Topbar setIsSidebar={setIsSidebar} setIsLoggedIn={setIsLoggedIn} />
-          
-              <Switch>
-                <Route path="/admin" component={Dashboard} exact />
-                <Route path="/registration" component={Register} exact />
-                <Route path="/team" component={Team} exact />
-                <Route path="/contacts" component={Contacts} exact />
-                <Route path="/invoices" component={Invoices} exact />
-                <Route path="/form" component={Form} exact />
-                <Route path="/songs_edit/:id" component={SongsEdit} exact /> 
-                <Route path="/bar" component={Bar} exact />
-                <Route path="/pie" component={Pie} exact />
-                <Route path="/line" component={Line} exact />
-                <Route path="/faq" component={FAQ} exact />
-                <Route path="/calendar" component={Calendar} exact />
-                <Route path="/geography" component={Geography} exact /> 
-                {/* Redirect to dashboard if user is not logged in */}
-                <Redirect to="/admin" />
-              </Switch>
-        
+
+            <Routes>
+              <Route path="/admin" element={Dashboard} exact />
+              <Route path="/registration" element={Register} exact />
+              <Route path="/team" element={Team} exact />
+              <Route path="/contacts" element={Contacts} exact />
+              <Route path="/invoices" element={Invoices} exact />
+              <Route path="/form" element={Form} exact />
+              <Route path="/songs_edit/:id" element={SongsEdit} exact />
+              <Route path="/bar" element={Bar} exact />
+              <Route path="/pie" element={Pie} exact />
+              <Route path="/line" element={Line} exact />
+              <Route path="/faq" element={FAQ} exact />
+              <Route path="/calendar" element={Calendar} exact />
+              <Route path="/geography" element={Geography} exact />
+              {/* Redirect to dashboard if user is not logged in */}
+              <Navigate to="/admin" />
+            </Routes>
+
           </main>
-          </Router>
+        </Router>
       </ThemeProvider>
     </ColorModeContext.Provider>
 

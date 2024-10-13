@@ -90,7 +90,7 @@ app.get("/api/suggested-songs", (req, res) => {
 
 // Middleware Router
 app.use("/api", authRoute);
-app.use("/users", userRoute);
+app.use("/auth/admin", userRoute);
 app.use("/api", songRouter);
 app.use("/api", categoryRouter);
 app.use("/api", favoriteRouter);

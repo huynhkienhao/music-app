@@ -1,5 +1,5 @@
 import { Box, IconButton, useTheme } from "@mui/material";
-import { useHistory } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import { ColorModeContext, tokens } from "../../theme";
 import InputBase from "@mui/material/InputBase";
 import LightModeOutlinedIcon from "@mui/icons-material/LightModeOutlined";
@@ -9,21 +9,15 @@ import SettingsOutlinedIcon from "@mui/icons-material/SettingsOutlined";
 import PersonOutlinedIcon from "@mui/icons-material/PersonOutlined";
 import SearchIcon from "@mui/icons-material/Search";
 import axios from "axios";
-import {useContext, useState} from "react";
+import { useContext, useState } from "react";
 
 const Topbar = ({ setIsLoggedIn }) => {
-  const history = useHistory();
+  const navigate = useNavigate();
   const [redirect, setRedirect] = useState(null);
   const theme = useTheme();
   const colors = tokens(theme.palette.mode);
   const colorMode = useContext(ColorModeContext);
 
-  // Dummy logout function for demonstration
-  // async function handleLogout() {
-  //   await axios.post('http://localhost:4000/api/logout');
-  //   setIsLoggedIn(false);
-  //   history.push('/login'); // Redirect to the admin page
-  // }
   const handleLogout = async () => {
     await localStorage.removeItem("token");
     window.location.reload();

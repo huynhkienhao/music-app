@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import styled from "styled-components";
-import { Link, useHistory } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { registerRoute } from "../../utils/APIRoutes"; // Ensure this is correctly defined
 
 const FormContainer = styled.div`
@@ -76,7 +76,7 @@ const FormContainer = styled.div`
 `;
 
 export default function Register() {
-  const history = useHistory();
+  const navigate = useNavigate();
 
   const [values, setValues] = useState({
     username: "",
@@ -87,9 +87,9 @@ export default function Register() {
 
   useEffect(() => {
     if (localStorage.getItem(process.env.REACT_APP_LOCALHOST_KEY)) {
-      history.push("/admin");
+      navigate('/admin');
     }
-  }, [history]);
+  }, [navigate]);
 
   const handleChange = (event) => {
     setValues({ ...values, [event.target.name]: event.target.value });
@@ -130,7 +130,7 @@ export default function Register() {
             process.env.REACT_APP_LOCALHOST_KEY,
             JSON.stringify(response.data.user)
           );
-          history.push("/admin");
+          navigate('/admin');
         }
       } catch (error) {
         console.error("An error occurred while registering:", error);
