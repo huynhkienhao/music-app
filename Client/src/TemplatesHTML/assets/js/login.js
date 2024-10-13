@@ -8,7 +8,21 @@ const handleLogin = async () => {
         email: email,
         password: password
     })
-    if (response.status == 200) {
 
+    console.log(response)
+    if (response.status == 200) {
+        const accessToken = response.data.accessToken;
+
+        // Decode để lấy thông tin Payload
+        const payloadDecoded = jwt_decode(accessToken);
+
+        if (payloadDecoded.role === 'regular') {
+            window.location.href = 'home_page.html';
+        } else {
+            window.location.href = 'admin_page.html';
+        }
+
+        // Save accessToken to Client
+        localStorage.setItem('access_token', accessToken);
     }
 }

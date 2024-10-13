@@ -8,7 +8,7 @@ import { fetchCategories } from '../Admin/actions/CategoryAction';
 import { fetchSong } from '../Admin/actions/SongAction';
 import { connect } from 'react-redux';
 import { FaArrowAltCircleRight, FaArrowAltCircleLeft } from 'react-icons/fa';
-import Header  from "./Header";
+import Header from "./Header";
 
 function MainContainer(props) {
   const [currentSlide, setCurrentSlide] = useState(0);
@@ -20,12 +20,12 @@ function MainContainer(props) {
   }, []); // Empty dependency array to fetch data only once on component mount
 
   useEffect(() => {
-   
-        setCopyData(props.songs);
-   
+
+    setCopyData(props.songs);
+
   }, [])
 
-  
+
   const handleCategoryClick = (category) => {
     let filteredData;
     if (category === "All") {
@@ -35,7 +35,7 @@ function MainContainer(props) {
     }
     setCopyData(filteredData);
   };
-  
+
   const handleSearch = (e) => {
     let getchangedata = e.toLowerCase();
     if (getchangedata === "") {
@@ -51,7 +51,7 @@ function MainContainer(props) {
     setCurrentSlide((prev) => (prev === props.songs.length - 1 ? 0 : prev + 1)); // Update current state
     console.log("Current slide:", currentSlide);
   };
-  
+
   const prevSlide = () => {
     console.log("Previous slide clicked");
     setCurrentSlide((prev) => (prev === 0 ? props.songs.length - 1 : prev - 1)); // Update current state
@@ -61,28 +61,28 @@ function MainContainer(props) {
   return (
     <div className="mainContainer">
       <Header></Header>
-    
+
       <div className="menuList">
-      <ul>
-  <li>
-    <button
-      className="filter-btn"
-      onClick={() => handleCategoryClick("All")} // Handle click for "All" category
-    >
-      All
-    </button>
-  </li>
-  {props.categories.map((category) => (
-    <li key={category.id}>
-      <button
-        className="filter-btn"
-        onClick={() => handleCategoryClick(category.name)}
-      >
-        {category.name}
-      </button>
-    </li>
-  ))}
-</ul>
+        <ul>
+          <li>
+            <button
+              className="filter-btn"
+              onClick={() => handleCategoryClick("All")} // Handle click for "All" category
+            >
+              All
+            </button>
+          </li>
+          {props.categories.map((category) => (
+            <li key={category.id}>
+              <button
+                className="filter-btn"
+                onClick={() => handleCategoryClick(category.name)}
+              >
+                {category.name}
+              </button>
+            </li>
+          ))}
+        </ul>
 
         <p>
           <div className="searchBox">
@@ -127,4 +127,4 @@ const mapStateToProps = (state) => {
   };
 };
 
-export default connect(mapStateToProps, { fetchCategories , fetchSong })(MainContainer);
+export default connect(mapStateToProps, { fetchCategories, fetchSong })(MainContainer);

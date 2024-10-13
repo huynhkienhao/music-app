@@ -2,11 +2,14 @@ const express = require("express");
 const app = express();
 const cors = require('cors');
 
-const mongoose = require("mongoose");
+// const mongoose = require("mongoose");
 
-const connectDb = require('./Services/ConnectDbService');
 const userRoute = require('./Router/UserRoute');
 const authRoute = require('./Router/AuthRoute');
+const connectDb = require('./Services/ConnectDbService');
+
+// import and configure dotenv
+require('dotenv').config();
 
 // const jwt = require("jsonwebtoken");
 // const bcrypt = require("bcrypt");
@@ -20,8 +23,7 @@ const songRouter = require("./Router/song");
 const favoriteRouter = require("./Router/favorite");
 // const multer = require("multer");
 
-// import and configure dotenv
-require('dotenv').config();
+
 
 // Middleware apply cors add all request
 app.use(cors());
@@ -33,10 +35,10 @@ app.use(cookieParser());
 
 app.use("/uploads", express.static(__dirname + "/uploads")); // Serve static files
 
-module.exports = app;
-
 // Connect database
 connectDb();
+
+module.exports = app;
 
 // Function to generate JWT token
 app.get("/api/getAdminProfile", async (req, res) => {
@@ -98,4 +100,3 @@ const PORT = process.env.PORT || 4000;
 app.listen(PORT, () => {
     console.log(`Server running on port ${PORT}`);
 });
-
