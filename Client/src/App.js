@@ -1,5 +1,3 @@
-// App.js
-
 import "./App.css";
 import React, { Profiler } from "react";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
