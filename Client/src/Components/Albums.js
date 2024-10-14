@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useRef } from "react";
 import AudioControls from "./AudioControls";
 import Backdrop from "./Backdrop";
-import "../styles/tracks.css";
+import "../assets/css/tracks.css";
 
 import { Songs } from "./Songs";
 /*
@@ -36,14 +36,14 @@ const AudioPlayer = ({ tracks }) => {
 
 
 
-  
+
   useEffect(() => {
 
     setTimeout(() => {
-        setCopyData(Songs);
+      setCopyData(Songs);
     }, 1000);
 
-}, [])
+  }, [])
   const startTimer = () => {
     // Clear any timers already running
     clearInterval(intervalRef.current);
@@ -101,7 +101,7 @@ const AudioPlayer = ({ tracks }) => {
 
     setCurrenttime(progressBar.current.value);
   };
-  
+
   useEffect(() => {
     if (isPlaying) {
       audioRef.current.play();
@@ -138,17 +138,17 @@ const AudioPlayer = ({ tracks }) => {
 
 
 
-  const setMainSong= (field) => (event) => {
+  const setMainSong = (field) => (event) => {
     //console.log('event.currentTarget.dataset.id', event.currentTarget.dataset.id)
-    
+
     let data = event.currentTarget.dataset.id;
     switch (field) {
-  
-        case 1:
-            findSong(data);
-          break;
-     
-     
+
+      case 1:
+        findSong(data);
+        break;
+
+
       default:
         break;
     }
@@ -156,103 +156,103 @@ const AudioPlayer = ({ tracks }) => {
 
   const findSong = (value) => {
     let data1 = [value];
- 
-setTrackIndex(data1-1);
+
+    setTrackIndex(data1 - 1);
   };
 
   return (
     <>
-    <ul class="browse-view-containerz">
-             
-                          
-               
-    {
-copydata.map((song, i) => (
+      <ul class="browse-view-containerz">
 
-    <div class="category-image">
-    
 
-    <li class="category-item">
-              <buttton
-                onClick={setMainSong(1)}
-               
-                value={song.id}
-            
-                data-id={song.id}
-                key={song.id}
-              >                         
 
-   
-       
-        
-                    <img alt="album" variant="top" class="picz" src={song.imgSrc} />
-              
-                              
-   
-    
-                    <div className="play-song">
-                      <i
-                        className="fa fa-play-circle-o play-btn"
-                        aria-hidden="true"
-                      />
-                    </div>
-              
-    
+        {
+          copydata.map((song, i) => (
+
+            <div class="category-image">
+
+
+              <li class="category-item">
+                <buttton
+                  onClick={setMainSong(1)}
+
+                  value={song.id}
+
+                  data-id={song.id}
+                  key={song.id}
+                >
+
+
+
+
+                  <img alt="album" variant="top" class="picz" src={song.imgSrc} />
+
+
+
+
+                  <div className="play-song">
+                    <i
+                      className="fa fa-play-circle-o play-btn"
+                      aria-hidden="true"
+                    />
+                  </div>
+
+
                   <div className="album-details">
 
                     <p className="album-name">{song.songName}</p>
                     <p className="artist-name">{song.artist}</p>
-       
+
                     <br></br>
                   </div>
-                    </buttton>
-     
+                </buttton>
+
               </li>
-                  </div>
-                           )
-                           )
-                         
-           }
-             
-              </ul>
-             
-    <div className="audio-player">
-      <div className="track-info">
-        
-        <img
-          className="artwork"
-          src={imgSrc}
-          alt={`track artwork for ${songName} by ${artist}`}
-        />
-        <h2 className="songName">{songName}</h2>
-        <h3 className="artist">{artist}</h3>
-        <AudioControls
-          ref={audioRef}
+            </div>
+          )
+          )
+
+        }
+
+      </ul>
+
+      <div className="audio-player">
+        <div className="track-info">
+
+          <img
+            className="artwork"
+            src={imgSrc}
+            alt={`track artwork for ${songName} by ${artist}`}
+          />
+          <h2 className="songName">{songName}</h2>
+          <h3 className="artist">{artist}</h3>
+          <AudioControls
+            ref={audioRef}
+            isPlaying={isPlaying}
+            onPrevClick={toPrevTrack}
+            onNextClick={toNextTrack}
+            onPlayPauseClick={setIsPlaying}
+
+          />
+          <input
+            type="range"
+            value={trackProgress}
+            step="1"
+            min="0"
+            max={duration ? duration : `${duration}`}
+            className="progress"
+            onChange={(e) => onScrub(e.target.value)}
+            onMouseUp={onScrubEnd}
+            onKeyUp={onScrubEnd}
+            style={{ background: trackStyling }}
+          />
+        </div>
+        <Backdrop
+          trackIndex={trackIndex}
+          activeColor={color}
           isPlaying={isPlaying}
-          onPrevClick={toPrevTrack}
-          onNextClick={toNextTrack}
-          onPlayPauseClick={setIsPlaying}
-   
-        />
-        <input
-          type="range"
-          value={trackProgress}
-          step="1"
-          min="0"
-          max={duration ? duration : `${duration}`}
-          className="progress"
-          onChange={(e) => onScrub(e.target.value)}
-          onMouseUp={onScrubEnd}
-          onKeyUp={onScrubEnd}
-          style={{ background: trackStyling }}
         />
       </div>
-      <Backdrop
-        trackIndex={trackIndex}
-        activeColor={color}
-        isPlaying={isPlaying}
-      />
-    </div>
     </>
   );
 };

@@ -1,5 +1,5 @@
 import React, { useState, useRef, useEffect } from "react";
-import "../styles/artist.css";
+import "../assets/css/artist.css";
 import styled from "styled-components";
 import Header from "./Header";
 // Import components

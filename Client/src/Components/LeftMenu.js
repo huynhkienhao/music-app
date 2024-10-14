@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import "../styles/LeftMenu.css";
+import "../assets/css/LeftMenu.css";
 import { FaSpotify, FaEllipsisH } from "react-icons/fa";
 import { BiSearchAlt } from "react-icons/bi";
 import { Menu } from "./Menu";

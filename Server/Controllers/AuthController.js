@@ -6,8 +6,8 @@ const jwt = require("jsonwebtoken");
 const userModel = require("../Models/UserModel");
 
 const multer = require("multer");
-const verify = require("./verifyToken");
-const upload = multer();
+// const verify = require("./verifyToken");
+// const upload = multer();
 
 const generateToken = (user) => {
     const payload = {

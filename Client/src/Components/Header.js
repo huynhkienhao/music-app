@@ -1,22 +1,13 @@
-import React, { useEffect, useState } from "react";
-import PropTypes from 'prop-types';
+import React from "react";
 import { useNavigate } from 'react-router-dom';
-
 import styled from "styled-components";
-import "../styles/search.css";
-
+import "../assets/css/search.css";
 import { RxCaretLeft, RxCaretRight } from "react-icons/rx";
-import { HiHome } from "react-icons/hi";
-import { BiSearch } from "react-icons/bi";
-import { FaUserAlt } from "react-icons/fa";
-import { useSupabaseClient } from "@supabase/auth-helpers-react";
-import { toast } from "react-hot-toast";
 
 export default function Header() {
   const navigate = useNavigate();
 
   const handleButtonClick = () => {
-    // Push a new entry onto the history stack
     navigate('/liked');
   };
   return (

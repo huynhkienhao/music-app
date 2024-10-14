@@ -1,7 +1,5 @@
 import React, { useEffect, useState } from "react";
-import "../styles/MainContainer.css";
-import { Banner } from "./Banner";
-
+import "../assets/css/MainContainer.css";
 import { AudioList } from "./AudioList";
 import { BiSearchAlt } from "react-icons/bi";
 import { fetchCategories } from '../Admin/actions/CategoryAction';

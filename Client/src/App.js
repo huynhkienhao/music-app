@@ -2,12 +2,10 @@
 
 import "./App.css";
 import React, { Profiler } from "react";
-import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
+import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import AdminRoutes from "./AdminRoutes";
 import UserRoutes from "./UserRoutes";
 import Register from "./Components/Register";
-
-// import PlaylistSection from "./Components/PlaylistSection"; // Import the PlaylistSection component
 import { Provider } from "react-redux";
 import store from "./store"; // Import your Redux store
 import Library from "./design/Library";
@@ -17,30 +15,13 @@ function App() {
     <div className="Main">
       <Router>
         <Provider store={store}>
-          {/* Wrap your entire application with the Provider */}
-          <Switch>
-            <Route exact path="/">
-              <UserRoutes />
-            </Route>
-
-            <Route path="/admin">
-              <AdminRoutes />
-            </Route>
-
-            <Route path="/lybary">
-              <Library />
-            </Route>
-
-            <Route path="/registration">
-              <Register />
-            </Route>
-
-            <Route path="/profile">
-              <Profiler />
-            </Route>
-
-            <Route path="/playlists">{/* <PlaylistSection /> */}</Route>
-          </Switch>
+          <Routes>
+            <Route path="/*" element={<UserRoutes />} />
+            <Route path="/admin/*" element={<AdminRoutes />} />
+            <Route path="/lybary" element={<Library />} />
+            <Route path="/registration" element={<Register />} />
+            <Route path="/profile" element={<Profiler />} />
+          </Routes>
         </Provider>
       </Router>
       <div className="background"></div>

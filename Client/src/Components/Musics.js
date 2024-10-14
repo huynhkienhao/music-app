@@ -1,7 +1,7 @@
 import React, { useState, useRef, useEffect } from "react";
 import AudioPlayer from 'react-h5-audio-player';
 import 'react-h5-audio-player/lib/styles.css';
-import "../styles/MusicPlayer.css";
+import "../assets/css/MusicPlayer.css";
 import { BsFillVolumeUpFill, BsMusicNoteList } from "react-icons/bs";
 import {
   FaRegHeart,
@@ -38,7 +38,7 @@ import {
 } from 'react-share';
 
 
-function MusicPlayer({ song, imgSrc, auto,id}) {
+function MusicPlayer({ song, imgSrc, auto, id }) {
   const [isLove, setLove] = useState(false);
   const [isPlaying, setPlay] = useState(false);
   //   duration state
@@ -111,13 +111,13 @@ function MusicPlayer({ song, imgSrc, auto,id}) {
     setLove(!isLove);
   };
 
-  
+
 
 
   return (
-    
-    
-     
+
+
+
     <div className="musicPlayer">
       <div className="songImage">
         <img src={imgSrc} alt="" />
@@ -127,7 +127,7 @@ function MusicPlayer({ song, imgSrc, auto,id}) {
 
         <div className="top">
           <div className="left">
-         
+
             <div className="loved" onClick={changeSongLove}>
               {isLove ? (
                 <i>
@@ -150,7 +150,7 @@ function MusicPlayer({ song, imgSrc, auto,id}) {
                 <FaStepBackward />
               </i>
               <i >
-                <FaBackward   />
+                <FaBackward />
               </i>
             </div>
             <div className="playPause" onClick={changePlayPause}>
@@ -176,15 +176,15 @@ function MusicPlayer({ song, imgSrc, auto,id}) {
 
           <div className="right">
             <i>
-              
-              <FacebookShareButton
-    url={song}
 
-    hashtag="#programing joke">
-    <FacebookIcon logoFillColor="white" />
-</FacebookShareButton>
+              <FacebookShareButton
+                url={song}
+
+                hashtag="#programing joke">
+                <FacebookIcon logoFillColor="white" />
+              </FacebookShareButton>
             </i>
-            
+
           </div>
           <input type="range" id="audio" />
         </div>
@@ -204,7 +204,7 @@ function MusicPlayer({ song, imgSrc, auto,id}) {
               ? duration && !isNaN(duration) && calculateTime(duration)
               : "00:00"}
           </div>
-    
+
         </div>
       </div>
     </div>

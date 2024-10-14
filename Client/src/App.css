@@ -2,7 +2,7 @@
   width: 100%;
   min-height: 100vh;
   position: relative;
- height:950px;
+  height: 950px;
   display: flex;
 
 }
@@ -13,11 +13,12 @@
   left: 0;
   right: 0;
   bottom: 0;
-  background: url(img/background.jpg) no-repeat center;
+  background: url(assets/img/background.jpg) no-repeat center;
   background-size: cover;
   filter: grayscale(100);
   z-index: -1;
 }
+
 .slider {
   position: relative;
   height: 20vh;
@@ -25,6 +26,7 @@
   justify-content: center;
   align-items: center;
 }
+
 .filter-btn {
   background: rgb(0, 255, 115);
   border-color: transparent;
@@ -66,6 +68,7 @@
   cursor: pointer;
   user-select: none;
 }
+
 .slide.active {
   opacity: 1;
   transition-duration: 1s;

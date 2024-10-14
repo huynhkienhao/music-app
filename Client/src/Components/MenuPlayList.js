@@ -1,5 +1,5 @@
 import React from "react";
-import "../styles/LeftMenu.css";
+import "../assets/css/LeftMenu.css";
 import { FaPlus } from "react-icons/fa";
 import { BsMusicNoteList, BsTrash } from "react-icons/bs";
 import { PlayList } from "./PlayList";

@@ -1,5 +1,5 @@
 import React, { useState, useRef, useEffect } from "react";
-import "../styles/MusicPlayer.css";
+import "../assets/css/MusicPlayer.css";
 import {
   FaRegHeart,
   FaHeart,

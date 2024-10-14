@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { FaHeadphones, FaRegClock, FaRegHeart, FaHeart } from "react-icons/fa";
-import "../styles/LeftMenu.css";
+import "../assets/css/LeftMenu.css";
 import MusicPlayer from "./MusicPlayer";
 import SuggestedSongs from "./SuggestedSongs"; // Import component SuggestedSongs
 import { fetchSong } from "../Admin/actions/SongAction";
