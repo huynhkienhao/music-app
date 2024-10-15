@@ -46,4 +46,8 @@ showListUser = (response) => {
     document.querySelector('.list_user').innerHTML = htmlUser;
 }
 
+handleAddUser = () => {
+    window.location.href = 'create_user.html';
+}
+
 getListUser();
