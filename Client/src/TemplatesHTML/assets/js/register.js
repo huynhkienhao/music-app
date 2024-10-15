@@ -11,7 +11,7 @@ handlerRegister = async () => {
 
 
         // 2. Gửi value trên Form register lên Server
-        const response = await axios.post('http://localhost:4000/api/register', {
+        const response = await axios.post('api/register', {
             username: username,
             email: email,
             password: password

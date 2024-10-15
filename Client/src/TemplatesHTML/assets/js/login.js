@@ -4,7 +4,7 @@ const handleLogin = async () => {
     const password = document.getElementById('password').value;
 
     // 2. Gửi value trên Form register lên Server
-    const response = await axios.post('http://localhost:4000/api/login', {
+    const response = await axios.post('api/login', {
         email: email,
         password: password
     })
