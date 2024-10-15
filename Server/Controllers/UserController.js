@@ -15,7 +15,9 @@ const getListUser = async (req, res) => {
             res.status(200).send(users);
         }
     } catch (error) {
-        console.log(error);
+        if (error instanceof jwt.TokenExpiredError) {
+            return res.status(401).send('Token Expired');
+        }
     }
 }
 
