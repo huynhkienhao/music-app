@@ -12,7 +12,7 @@ handleSubmitAddUser = async () => {
         console.log(`role: ${role}`);
 
         // 2. Gửi giá trị từ client đến server
-        const response = await axios.post('api/auth/user/create', {
+        const response = await axios.post('auth/admin/user/create', {
             username: username,
             email: email,
             password: password,
