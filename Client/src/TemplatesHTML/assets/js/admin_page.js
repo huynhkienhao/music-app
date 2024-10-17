@@ -2,14 +2,15 @@
 
 getListUser = async () => {
     try {
-        const configHeader = {
-            headers: {
-                Authorization: `Bearer ${localStorage.getItem('access_token')}`
-            }
-        }
         // Call API get list users
-        const response = await axios.get('auth/admin/user', configHeader);
+        const response = await axios.get('auth/admin/user');
         showListUser(response);
+
+        // Show username login
+        // Decode để lấy thông tin Payload
+        const accessToken = localStorage.getItem('access_token');
+        const payloadDecoded = jwt_decode(accessToken);
+        document.querySelector('.username').innerText = payloadDecoded.username;
     } catch (error) {
         if (error.response.status === 401) {
             window.location.href = 'login.html';
@@ -49,6 +50,9 @@ showListUser = (response) => {
 handleDeleteUser = async (userId) => {
     try {
         const response = await axios.delete(`auth/admin/user/delete/${userId}`);
+        if (response.status === 200) {
+            window.location.reload();
+        }
     } catch (error) {
         if (error.response.status === 401) {
             window.location.href = 'login.html';
@@ -57,6 +61,11 @@ handleDeleteUser = async (userId) => {
 }
 handleAddUser = () => {
     window.location.href = 'create_user.html';
+}
+
+handleLogoutUser = () => {
+    localStorage.removeItem('access_token');
+    window.location.href = 'login.html';
 }
 
 getListUser();
