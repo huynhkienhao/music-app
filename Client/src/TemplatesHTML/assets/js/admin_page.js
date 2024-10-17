@@ -45,9 +45,10 @@ showListUser = (response) => {
                 </table>`;
     document.querySelector('.list_user').innerHTML = htmlUser;
 }
+
 handleDeleteUser = async (userId) => {
     try {
-        const response = await axios.get(`auth/admin/user/${userId}`);
+        const response = await axios.delete(`auth/admin/user/delete/${userId}`);
     } catch (error) {
         if (error.response.status === 401) {
             window.location.href = 'login.html';
