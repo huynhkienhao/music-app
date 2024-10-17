@@ -1,5 +1,5 @@
 const jwt = require("jsonwebtoken");
-// const User = require("../models/User");
+const userModel = require('../Models/UserModel');
 
 const AuthMiddleware = async (req, res, next) => {
   const token = req.header("Authorization")?.replace("Bearer ", "");
@@ -28,14 +28,29 @@ const isAuthentication = (req, res, next) => {
     const bearerHeader = req.headers['authorization'];
     const accessToken = bearerHeader.split(' ')[1];
     const decodeJwt = jwt.verify(accessToken, process.env.SECRET_JWT);
+    req.userId = decodeJwt._id;
     next();
   } catch (error) {
     if (error instanceof jwt.TokenExpiredError) {
       return res.status(401).send('Token Expired');
     }
+    return res.status(401).send('Authentication not valid');
+  }
+}
+
+const isAdmin = async (req, res, next) => {
+  try {
+    const userId = req.userId;
+    const user = await userModel.findById(userId);
+    if (user.role === 'admin') {
+      next();
+    }
+  } catch (error) {
+    return res.status(401).send('Authentication not valid');
   }
 }
 
 module.exports = {
-  isAuthentication: isAuthentication
+  isAuthentication: isAuthentication,
+  isAdmin: isAdmin
 }
