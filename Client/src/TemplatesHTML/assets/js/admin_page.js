@@ -37,7 +37,7 @@ showListUser = (response) => {
                         <td>${user.role}</td>
                         <td>${user.email}</td>
                         <td>
-                            Delete
+                            <button id="${user._id}" type="button" class="btn btn-danger" onclick="handleDeleteUser(this.id)">Delete</button>
                         </td>
                     </tr>`;
     });
@@ -45,7 +45,15 @@ showListUser = (response) => {
                 </table>`;
     document.querySelector('.list_user').innerHTML = htmlUser;
 }
-
+handleDeleteUser = async (userId) => {
+    try {
+        const response = await axios.get(`auth/admin/user/${userId}`);
+    } catch (error) {
+        if (error.response.status === 401) {
+            window.location.href = 'login.html';
+        }
+    }
+}
 handleAddUser = () => {
     window.location.href = 'create_user.html';
 }
