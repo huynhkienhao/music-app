@@ -1,8 +1,8 @@
 import React, { useState, useRef, useEffect } from "react";
-import AudioPlayer from 'react-h5-audio-player';
+// import AudioPlayer from 'react-h5-audio-player';
 import 'react-h5-audio-player/lib/styles.css';
 import "../assets/css/MusicPlayer.css";
-import { BsFillVolumeUpFill, BsMusicNoteList } from "react-icons/bs";
+// import { BsFillVolumeUpFill, BsMusicNoteList } from "react-icons/bs";
 import {
   FaRegHeart,
   FaHeart,
@@ -12,30 +12,34 @@ import {
   FaBackward,
   FaPlay,
   FaPause,
-  FaShareAlt,
+  //FaShareAlt,
 } from "react-icons/fa";
 
-import { Songs } from "./Songs";
+// import { Songs } from "./Songs";
 import { BsDownload } from "react-icons/bs";
 import {
   FacebookShareButton,
-  FacebookIcon,
-  GooglePlusShareButton,
-  LinkedinShareButton,
-  TwitterShareButton,
-  TelegramShareButton,
-  WhatsappShareButton,
-  PinterestShareButton,
-  VKShareButton,
-  OKShareButton,
-  RedditShareButton,
-  TumblrShareButton,
-  LivejournalShareButton,
-  MailruShareButton,
-  ViberShareButton,
-  WorkplaceShareButton,
-  EmailShareButton,
+  FacebookIcon
 } from 'react-share';
+
+
+// import {
+//   GooglePlusShareButton,
+//   LinkedinShareButton,
+//   TwitterShareButton,
+//   TelegramShareButton,
+//   WhatsappShareButton,
+//   PinterestShareButton,
+//   VKShareButton,
+//   OKShareButton,
+//   RedditShareButton,
+//   TumblrShareButton,
+//   LivejournalShareButton,
+//   MailruShareButton,
+//   ViberShareButton,
+//   WorkplaceShareButton,
+//   EmailShareButton,
+// } from 'react-share';
 
 
 function MusicPlayer({ song, imgSrc, auto, id }) {

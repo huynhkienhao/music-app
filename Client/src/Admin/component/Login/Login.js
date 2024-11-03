@@ -3,13 +3,11 @@ import "./Login.css";
 import { Link, useNavigate } from "react-router-dom";
 import { LoginUser } from "../../actions/AuthAdminAction";
 import { connect } from "react-redux";
-import axios from "axios";
 
 const Login = (props) => {
   const navigate = useNavigate();
   const [username, setUser] = useState("");
   const [password, setPassword] = useState("");
-  const [redirect, setRedirect] = useState(false);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
