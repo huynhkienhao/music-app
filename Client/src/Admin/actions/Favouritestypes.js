@@ -1,4 +1,3 @@
-// Favouritestypes.js
 
 // Define action types for fetching categories
 export const FETCH_FAVORITES_REQUEST = 'FETCH_FAVORITES_REQUEST';
